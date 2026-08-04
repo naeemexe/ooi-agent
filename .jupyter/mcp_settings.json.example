@@ -1,0 +1,9 @@
+{
+  "mcp_servers": [
+    {
+      "name": "ooi",
+      "command": "/ABSOLUTE/PATH/TO/python",
+      "args": ["/ABSOLUTE/PATH/TO/ooi/ooi_mcp_server.py"]
+    }
+  ]
+}

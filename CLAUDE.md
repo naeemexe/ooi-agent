@@ -14,10 +14,12 @@ source of truth for the science:
 - `context/Instruments List.txt` — instrument classes, what they measure, data-product codes
 - `context/Data Products.txt` — all data products grouped by sampling regime
 
-## Your tool
+## Your tools (MCP server `ooi`)
 
-Use the **`ooi_lookup`** MCP tool (server `ooi`) to turn a site code + instrument class into the
-exact node / sensor / method / stream. It reads OOI's real catalog — **never guess these codes.**
+- **`ooi_lookup(site, instrument)`** — turn a site code + instrument class into the exact
+  node / sensor / method / stream. Reads OOI's real catalog — **never guess these codes.**
+- **`ooi_availability(site, node, sensor, method, stream)`** — the REAL date range that exists
+  for a stream, without downloading. Call this **before** promising a user any data.
 
 ## How to RECOMMEND data (e.g. "which OOI data should I use for this study?")
 
@@ -35,26 +37,50 @@ Be precise, not exhaustive. Precision over coverage. Structure it as:
 
 Keep it readable: short prose or a small list. No big multi-category tables, no emoji headers.
 
-## How to FETCH and PLOT data
+## How to GET and ANALYZE data — a step-by-step process
 
-Do **not** try to render plots yourself. Instead, give the user a **ready-to-run notebook cell**
-they can paste and run (the plot renders in their kernel, and the code is transparent). Use the
-helper functions in `ooi_tools.py`. First get the exact codes with `ooi_lookup`, then write:
+Go one step at a time. Don't render plots yourself; give the user a **ready-to-run notebook
+cell** they paste (the plot/data appears in their kernel, and the code is transparent).
+
+**Step 1 — codes.** Use `ooi_lookup` to get the exact node / sensor / method / stream.
+
+**Step 2 — data source: ASK the user which one:**
+  - **THREDDS** (default) — OOI's public Gold Copy server, works anywhere.
+  - **kdata** — files mounted locally on OOI JupyterHub (faster, only when on the Hub).
+  Pass `source="thredds"` or `source="kdata"` to `ooi_fetch`.
+
+**Step 3 — check availability; do NOT guess.** Before you tell the user data can be fetched,
+  call `ooi_availability(...)`. If their period is outside the real coverage, tell them the
+  **actual** range and suggest options — a period inside it, another method (recovered_host /
+  recovered_inst), or the other source. **Never silently fetch a different range than asked.**
+
+**Step 4 — fetch (one cell).** `ooi_fetch` returns the SCIENCE variables already labeled (long
+  name, units, L1/L2 level); raw/engineering columns are hidden. Read `info["status"]`:
+  `ok`, `no_data_in_range` (report the real coverage it gives back), or `not_found`.
 
 ```python
-from ooi_tools import ooi_fetch, ooi_plot   # run the notebook from the project folder
+from ooi_tools import ooi_availability, ooi_fetch, ooi_plot, ooi_series   # run from the project folder
 
-# fetch recent data (dates optional, 'YYYY-MM-DD'); prints the available variable names
-info = ooi_fetch("CE02SHSM", "RID27", "03-CTDBPC000", "telemetered",
-                 "ctdbp_cdef_dcl_instrument", start="2024-05-01", stop="2024-06-01")
-print(info["variables"])
-
-# plot one variable (pass several site codes to overlay a comparison)
-ooi_plot("sea_water_temperature", sites=["CE02SHSM"], title="Oregon Shelf temperature")
+ooi_availability("CE02SHSM", "RID27", "02-FLORTD000", "telemetered", "flort_sample")
+info = ooi_fetch("CE02SHSM", "RID27", "02-FLORTD000", "telemetered", "flort_sample",
+                 start="2024-01-01", stop="2024-06-30", source="thredds")
+print(info["status"]); print(info.get("science_variables"))
 ```
 
-Fill in the real node/sensor/method/stream from `ooi_lookup`, and pick the variable name that
-matches the request.
+**Step 5 — plot.** Pick the variable name from `info["science_variables"]` (pass several site
+  codes to overlay a comparison):
+
+```python
+ooi_plot("fluorometric_chlorophyll_a", sites=["CE02SHSM"], title="Oregon Shelf chlorophyll")
+```
+
+**Step 6 — analyze (when the user asks a question about the data).** Use `ooi_series(variable)`
+  to get a clean, time-indexed pandas Series, then write a short cell to answer and interpret it:
+  - *"when do phytoplankton blooms happen?"* → `s = ooi_series("fluorometric_chlorophyll_a")`,
+    then `s.groupby(s.index.month).mean()` (seasonal cycle) and `s.resample("1M").mean().idxmax()`
+    (peak month) — a bloom is the seasonal chlorophyll maximum.
+  - trends, seasonal range, min/max timing, site comparisons are all plain pandas on the Series.
+  Always interpret in plain science language and state caveats (gaps, one deployment, QC).
 
 **Prefer giving one copy-paste cell** the user runs themselves — it is the most reliable path.
 If you instead write cells into a notebook directly, **append each new cell at the END of the

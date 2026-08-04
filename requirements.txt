@@ -6,7 +6,9 @@
 
 mcp                    # the MCP server (ooi_mcp_server.py) speaks this protocol
 pyyaml                 # ooi_mcp_server.py reads context/m2m_urls.yml
+requests               # ooi_mcp_server.py ooi_availability lists the THREDDS catalog
 xarray                 # datasets returned by OOI
+pandas                 # ooi_series + analysis
 matplotlib             # ooi_plot
 h5netcdf               # NetCDF backend for reading OOI files
 jupyterlab             # the notebook + AI chat panel

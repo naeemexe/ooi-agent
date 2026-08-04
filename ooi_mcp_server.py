@@ -1,44 +1,43 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-OOI lookup MCP server (stdio transport).
+"""OOI MCP server (stdio transport).
 
-Exposes ONE tool, ooi_lookup, that returns the exact node / sensor / method / stream
-for an instrument at an OOI site, read straight from context/m2m_urls.yml.
+Tools:
+    ooi_lookup(site, instrument)                       -> node/sensor/method/stream
+    ooi_availability(site, node, sensor, method, stream) -> date coverage of a stream
 
-This is the standalone MCP server that external agents (Claude Code, opencode) connect to
-from the Jupyter AI chat. It is intentionally lightweight — the only dependency beyond the
-standard library is PyYAML and the mcp SDK. Data fetching and plotting are NOT done here;
-the agent writes a copy-paste notebook cell for that (so plots render in the user's kernel).
-
-Run:  python ooi_mcp_server.py     (agents launch it for you via their MCP config)
+Launched as a subprocess by the agent via its MCP configuration. Dependencies are
+PyYAML, requests, and the mcp SDK. Data download, plotting, and analysis are handled
+by ooi_tools.py in the notebook kernel, not here.
 """
 import os
+import re
 import yaml
+import requests
 from mcp.server.fastmcp import FastMCP
 
 _DIR = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(_DIR, 'context', 'm2m_urls.yml')) as f:
     CATALOG = yaml.safe_load(f)
 
+_GC_URL = ('https://thredds.dataexplorer.oceanobservatories.org/thredds/'
+           'catalog/ooigoldcopy/public/')
+
 mcp = FastMCP('ooi')
 
 
 @mcp.tool()
 def ooi_lookup(site: str, instrument: str) -> dict:
-    """Get the exact node, sensor, method, and stream codes for an instrument at an OOI site.
+    """Resolve an instrument at a site to its exact node, sensor, method, and stream codes.
 
-    Read straight from OOI's catalog (m2m_urls.yml) — this is ground truth. Use it to turn a
-    site code (e.g. CE02SHSM) plus an instrument class (e.g. ctdbp, phsen, flort, dosta, metbk)
-    into the exact codes needed to fetch data. Never guess these codes.
+    Reads OOI's catalog (m2m_urls.yml). These codes must not be guessed.
 
     Args:
         site: OOI site code, e.g. CE02SHSM, GI01SUMO, RS01SLBS.
         instrument: instrument class, e.g. ctdbp, phsen, flort, dosta, nutnr, metbk, velpt.
 
-    Returns a dict with the matching node/sensor/depth/location and the available
-    method->stream options; or, if the instrument isn't at that site, the list of
-    instrument classes that ARE there.
+    Returns the matching node/sensor/depth/location and the available method->stream
+    options, or the instrument classes present at the site if there is no match.
     """
     s = site.upper()
     ins = instrument.lower()
@@ -50,12 +49,15 @@ def ooi_lookup(site: str, instrument: str) -> dict:
         for instr in assembly.get('instrument', []):
             instruments_here.add(instr['class'])
             if instr['class'] == ins:
+                # some methods list several streams; the first is the primary one
+                streams = {m: (v[0] if isinstance(v, list) else v)
+                           for m, v in (instr.get('stream') or {}).items()}
                 options.append({
                     'node': instr['node'],
                     'sensor': instr['sensor'],
                     'depth_m': instr.get('mindepth'),
                     'location': assembly.get('name', assembly.get('type')),
-                    'methods_and_streams': instr.get('stream', {}),
+                    'methods_and_streams': streams,
                 })
 
     if not options:
@@ -64,5 +66,45 @@ def ooi_lookup(site: str, instrument: str) -> dict:
     return {'site': s, 'instrument': ins, 'options': options}
 
 
+@mcp.tool()
+def ooi_availability(site: str, node: str, sensor: str, method: str, stream: str) -> dict:
+    """Report the date coverage of a stream on the Gold Copy THREDDS server.
+
+    Lists the catalog filenames (which embed dates) without downloading, and returns the
+    first and last dates available plus the file count. A requested period outside this
+    range has no data; the actual coverage, another delivery method (recovered_host /
+    recovered_inst), or the kdata source are the alternatives.
+
+    Args:
+        site, node, sensor, method, stream: codes from ooi_lookup.
+
+    Returns available_from / available_to (YYYY-MM-DD) and n_files, or status
+    'not_found' / 'error'.
+    """
+    ds_id = f'{site.upper()}-{node}-{sensor}-{method}-{stream}'
+    try:
+        html = requests.get(_GC_URL + ds_id + '/catalog.html', timeout=30).text
+    except Exception as e:
+        return {'status': 'error', 'message': f"Could not read the THREDDS catalog: {e}"}
+
+    tag = re.compile(rf'{re.escape(sensor)}-{re.escape(method)}-{re.escape(stream)}.*?\.nc')
+    files = tag.findall(html)
+    if not files:
+        return {'status': 'not_found',
+                'message': f"No THREDDS files for {ds_id}. Check the codes, or try another "
+                           f"delivery method (recovered methods sometimes exist when "
+                           f"telemetered does not, and the reverse)."}
+
+    dates = [(m.group(1), m.group(2)) for f in files
+             for m in [re.search(r'_(\d{8})T\d{6}[^-]*-(\d{8})T\d{6}', f)] if m]
+    if not dates:
+        return {'status': 'ok', 'n_files': len(files),
+                'note': 'files found but dates not parseable from names'}
+    first, last = min(d[0] for d in dates), max(d[1] for d in dates)
+    fmt = lambda d: f"{d[:4]}-{d[4:6]}-{d[6:8]}"
+    return {'status': 'ok', 'n_files': len(files),
+            'available_from': fmt(first), 'available_to': fmt(last)}
+
+
 if __name__ == '__main__':
-    mcp.run()   # stdio transport by default
+    mcp.run()
