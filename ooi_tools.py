@@ -60,13 +60,13 @@ def _pretty(d):
 
 
 def _list_source_files(site, node, sensor, method, stream, source):
-    """List a stream's files without downloading. The tag pins this exact
-    sensor+stream so files from a co-located sensor are excluded."""
+    """List a stream's files without downloading."""
     ds_id = f'{site}-{node}-{sensor}-{method}-{stream}'
-    tag = rf'.*{sensor}-{method}-{stream}.*\.nc$'
     if source == 'kdata':
-        d = os.path.join(_KDATA_ROOT, ds_id)
-        return sorted(f for f in glob.glob(os.path.join(d, '*.nc')) if re.search(tag, f))
+        # the kdata directory is already specific to this stream, so take every file
+        return sorted(glob.glob(os.path.join(_KDATA_ROOT, ds_id, '*.nc')))
+    # THREDDS catalogs can mix co-located sensors, so pin this exact sensor+stream
+    tag = rf'.*{sensor}-{method}-{stream}.*\.nc$'
     return sorted(list_files(_GC_URL + ds_id + '/catalog.html', tag))
 
 

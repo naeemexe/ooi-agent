@@ -49,10 +49,14 @@ cell** they paste (the plot/data appears in their kernel, and the code is transp
   - **kdata** — files mounted locally on OOI JupyterHub (faster, only when on the Hub).
   Pass `source="thredds"` or `source="kdata"` to `ooi_fetch`.
 
-**Step 3 — check availability; do NOT guess.** Before you tell the user data can be fetched,
-  call `ooi_availability(...)`. If their period is outside the real coverage, tell them the
-  **actual** range and suggest options — a period inside it, another method (recovered_host /
-  recovered_inst), or the other source. **Never silently fetch a different range than asked.**
+**Step 3 — check availability WITH THE SAME source you will fetch from.** Call
+  `ooi_availability(..., source=...)` using the source chosen in Step 2. Checking THREDDS and
+  then fetching kdata (or the reverse) is the common mistake — the two must match. Then:
+  - If the period is outside the returned coverage, report the actual range and suggest a period
+    inside it, another method (recovered_host / recovered_inst), or the other source.
+  - If `source="kdata"` returns `not_found`, the kdata mount is not present here (it exists only
+    on the OOI JupyterHub) — say so and offer THREDDS.
+  Never claim data is available from one source and then fetch from another.
 
 **Step 4 — fetch (one cell).** `ooi_fetch` returns the SCIENCE variables already labeled (long
   name, units, L1/L2 level); raw/engineering columns are hidden. Read `info["status"]`:
