@@ -1,0 +1,35 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.env
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+
+# ---- Jupyter AI chat session files (local artifacts) ----
+*.chat
+
+# ---- Machine-specific / local config ----
+# Claude Code local settings (permissions, etc.)
+.claude/
+# MCP config holds YOUR absolute paths — commit a .jupyter/mcp_settings.json.example instead
+.jupyter/mcp_settings.json
+
+# ---- OS junk ----
+.DS_Store
+Thumbs.db
+
+# ---- Downloaded / large data (data is fetched at runtime, never committed) ----
+*.nc
+*.h5
+ooidata/
+
+# ---- Logs ----
+*.log

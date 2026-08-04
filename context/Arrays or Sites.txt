@@ -1,0 +1,149 @@
+OOI ARRAYS AND SITES
+An array is a group of platforms in one region. The 8-character SITE CODE (e.g. CE02SHSM) is
+what you pass to the tools. Depth = water depth. Status "suspended/removed" means the platform
+is gone but its historical data is still available. Platform-type suffixes: SM=Surface Mooring,
+PM=Profiler Mooring, SP=Surface-Piercing Profiler, HYPM=Apex Profiler, SUMO=Apex Surface,
+FLMA/FLMB=Flanking moorings, BP/BS=cabled Benthic/Seafloor, PS/PD=cabled Shallow/Deep Profiler,
+MOAS=mobile assets (gliders/AUVs), PN=cabled Primary Node.
+
+============================================================
+COASTAL ARRAYS (cross-shelf moorings on the US coasts)
+============================================================
+
+## Coastal Endurance Array — NE Pacific, off Oregon & Washington — ACTIVE
+Eastern-boundary upwelling system; strong focus on hypoxia and ocean acidification. Two lines:
+Oregon (off Newport, ~44.6N) and Washington (off Grays Harbor, ~47N), each spanning inner-shelf
+(~25m), shelf (~80m), and slope (~500m). Themes: Coastal Ocean Dynamics; Climate Variability;
+Ocean-Atmosphere Exchange; Turbulent Mixing.
+  CE01ISSM  Oregon Inshore Surface Mooring                 25 m
+  CE01ISSP  Oregon Inshore Surface-Piercing Profiler       25 m
+  CE02SHSM  Oregon Shelf Surface Mooring                   80 m
+  CE02SHSP  Oregon Shelf Surface-Piercing Profiler         81 m
+  CE04OSSM  Oregon Offshore Surface Mooring               588 m
+  CE06ISSM  Washington Inshore Surface Mooring             29 m
+  CE06ISSP  Washington Inshore Surface-Piercing Profiler   29 m
+  CE07SHSM  Washington Shelf Surface Mooring               87 m
+  CE07SHSP  Washington Shelf Surface-Piercing Profiler     87 m
+  CE09OSPM  Washington Offshore Profiler Mooring          544 m
+  CE09OSSM  Washington Offshore Surface Mooring           542 m
+  CE05MOAS  Mobile Assets (gliders)
+  (cabled Oregon components CE02SHBP / CE04OSBP / CE04OSPD / CE04OSPS are listed under the
+   Cabled Endurance Array below)
+
+## Coastal Pioneer — New England Shelf (NES) Array — off Martha's Vineyard — SUSPENDED 2022-11-22
+Shelf-break front, highly productive. Whole array suspended 2022-11-22 when relocated to the
+Mid-Atlantic Bight; historical data remains available. Themes: Coastal Ocean Dynamics; Climate
+Variability; Ocean-Atmosphere Exchange; Turbulent Mixing.
+  CP01CNSM  Central Surface Mooring                        133 m   [suspended 2022]
+  CP01CNPM  Central Profiler Mooring                       130 m   [suspended 2022]
+  CP01CNSP  Central Surface-Piercing Profiler              133 m   [suspended 2022]
+  CP03ISSM  Inshore Surface Mooring                         92 m   [suspended 2022]
+  CP03ISPM  Inshore Profiler Mooring                        90 m   [suspended 2022]
+  CP03ISSP  Inshore Surface-Piercing Profiler               92 m   [suspended 2022]
+  CP04OSSM  Offshore Surface Mooring                       450 m   [suspended 2022]
+  CP04OSPM  Offshore Profiler Mooring                      453 m   [suspended 2022]
+  CP02PMUI  Upstream Inshore Profiler Mooring               95 m   [suspended 2022]
+  CP02PMUO  Upstream Offshore Profiler Mooring             452 m   [suspended 2022]
+  CP02PMCI  Central Inshore Profiler Mooring               127 m   [suspended 2022]
+  CP02PMCO  Central Offshore Profiler Mooring              148 m
+  CP05MOAS  Mobile Assets                                 1000 m   [suspended 2022]
+
+## Coastal Pioneer — Mid-Atlantic Bight (MAB) Array — off Nags Head, North Carolina — ACTIVE
+T-shaped array across the shelf-break front (the relocated Pioneer array). Themes: Coastal Ocean
+Dynamics; Climate Variability; Ocean-Atmosphere Exchange; Turbulent Mixing.
+  CP10CNSM  Central Surface Mooring                         30 m
+  CP12CNSW  Central Shallow Water Mooring                   30 m
+  CP12WESW  Western Shallow Water Mooring                   25 m
+  CP11NOSM  Northern Surface Mooring                       100 m
+  CP13NOPM  Northern Profiler Mooring                      100 m
+  CP11SOSM  Southern Surface Mooring                       100 m
+  CP13SOPM  Southern Profiler Mooring                      100 m
+  CP13EAPM  Eastern Profiler Mooring                       100 m
+  CP14NEPM  Northeastern Profiler Mooring                  300 m
+  CP14SEPM  Southeastern Profiler Mooring                  300 m
+  CP15MOAS  Glider Mobile Assets                        30-1000 m
+  CP16MOAS  AUV Mobile Assets                           30-1000 m
+
+============================================================
+GLOBAL ARRAYS (high-latitude, open ocean; triangular mooring sets)
+============================================================
+
+## Global Irminger Sea Array — North Atlantic, SE of Greenland — ACTIVE
+High wind and waves, deep-water formation feeding thermohaline circulation, high productivity,
+important fishery. Themes: Climate Variability; Ocean-Atmosphere Exchange; Turbulent Mixing.
+  GI01SUMO  Apex Surface Mooring                          2800 m
+  GI02HYPM  Apex Profiler Mooring                         2800 m
+  GI03FLMA  Flanking Subsurface Mooring A                 2800 m
+  GI03FLMB  Flanking Subsurface Mooring B                 2800 m
+  GI05MOAS  Mobile Assets                                 1000 m
+
+## Global Station Papa Array — Gulf of Alaska (NE Pacific) — ACTIVE
+Highly vulnerable to ocean acidification; productive fishery; low eddy variability; influenced by
+the Pacific Decadal Oscillation. Themes: Climate Variability; Coastal Ocean Dynamics;
+Ocean-Atmosphere Exchange.
+  GP02HYPM  Apex Profiler Mooring                         4219 m
+  GP03FLMA  Flanking Subsurface Mooring A                 4126 m
+  GP03FLMB  Flanking Subsurface Mooring B                 4145 m
+  GP05MOAS  Mobile Assets                                 1000 m
+
+## Global Argentine Basin Array — South Atlantic — REMOVED 2018-01 (data available)
+Operated 2015-03 to 2018-01. High biological productivity (iron-laden continental dust), strong
+deep currents, high eddy kinetic energy. Themes: Climate Variability; Ocean-Atmosphere Exchange;
+Turbulent Mixing.
+  GA01SUMO  Apex Surface Mooring                          5200 m   [suspended 2018]
+  GA02HYPM  Apex Profiler Mooring                         5200 m   [suspended 2018]
+  GA03FLMA  Flanking Subsurface Mooring A                 5200 m   [suspended 2018]
+  GA03FLMB  Flanking Subsurface Mooring B                 5200 m   [suspended 2018]
+  GA05MOAS  Mobile Assets                                          [suspended 2018]
+
+## Global Southern Ocean Array — SW of Chile (high-latitude S Pacific) — REMOVED 2020-01 (data available)
+Operated 2015-02 to 2020-01. Large-scale thermohaline circulation, intermediate-water formation,
+CO2 sequestration; cold, dry, data-sparse Southern Hemisphere. Themes: Climate Variability;
+Ocean-Atmosphere Exchange; Turbulent Mixing.
+  GS01SUMO  Apex Surface Mooring                          4800 m   [suspended 2020]
+  GS02HYPM  Apex Profiler Mooring                         4800 m   [suspended 2020]
+  GS03FLMA  Flanking Subsurface Mooring A                 4800 m   [suspended 2020]
+  GS03FLMB  Flanking Subsurface Mooring B                 4800 m   [suspended 2020]
+  GS05MOAS  Mobile Assets                                          [suspended 2020]
+
+============================================================
+REGIONAL CABLED ARRAY (fiber-optic, real-time, off Oregon)
+============================================================
+High power and bandwidth to seafloor and profiler instruments; real-time. Monitors volcanic and
+hydrothermal activity, methane seeps, earthquakes, and water-column processes.
+
+## Cabled Axial Seamount — Juan de Fuca ridge, >300 km offshore
+Most magmatically active volcano on the ridge (erupted 1998, 2011, 2015); active hydrothermal
+fields (ASHES, International District). Themes: Fluid-Rock Interactions; Global/Plate-Scale
+Geodynamics; Turbulent Mixing.
+  RS03AXBS  Axial Base Seafloor                           2606 m
+  RS03AXPS  Axial Base Shallow Profiler Mooring           2607 m
+  RS03AXPD  Axial Base Deep Profiler Mooring              2604 m
+  RS03ASHS  ASHES Vent Field                              1552 m
+  RS03CCAL  Central Caldera                               1523 m
+  RS03ECAL  Eastern Caldera                               1519 m
+  RS03INT1  International District Vent Field 1           1516 m
+  RS03INT2  International District Vent Field 2           1526 m
+  PN03A     Axial Base Primary Node                       2611 m
+  PN03B     ASHES Vent Field Primary Node                 1525 m
+  PN05A     Juan de Fuca Mid-Plate Primary Node           2800 m
+
+## Cabled Continental Margin — Cascadia slope + Southern Hydrate Ridge
+Off the continental slope near the Cascadia subduction zone; Southern Hydrate Ridge has methane
+hydrates. Connects up-slope to the Endurance Oregon line. Themes: Climate Variability; Coastal
+Ocean Dynamics; Ocean-Atmosphere Exchange; Fluid-Rock Interactions.
+  RS01SLBS  Oregon Slope Base Seafloor                    2901 m
+  RS01SBPS  Oregon Slope Base Shallow Profiler Mooring    2906 m
+  RS01SBPD  Oregon Slope Base Deep Profiler Mooring       2893 m
+  RS01SUM1  Southern Hydrate Summit 1 Seafloor             775 m
+  RS01SUM2  Southern Hydrate Summit 2 Seafloor             772 m
+  PN01A     Oregon Slope Base Primary Node                2905 m
+  PN01B     Hydrate Ridge Primary Node                    1241 m
+
+## Cabled Endurance — cabled components of the Oregon line
+Productive shelf/slope upwelling; hypoxia. Complements the uncabled Endurance moorings above.
+Themes: Climate Variability; Coastal Ocean Dynamics; Ocean-Atmosphere Exchange.
+  CE02SHBP  Oregon Shelf Benthic Experiment Package        79 m
+  CE04OSBP  Oregon Offshore Benthic Experiment Package    579 m
+  CE04OSPD  Oregon Offshore Cabled Deep Profiler Mooring  576 m
+  CE04OSPS  Oregon Offshore Cabled Shallow Profiler Moor. 588 m

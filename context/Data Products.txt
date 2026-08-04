@@ -1,0 +1,126 @@
+OOI DATA PRODUCTS (complete list)
+Format: Product name — CODE. Grouped by sampling regime. The CODE is the OOI designation; the
+actual variable name inside a fetched dataset is usually a readable CF name (e.g. TEMPWAT ->
+sea_water_temperature). Use this list to know what each measurement is and which regime it lives in.
+
+============================================================
+AIR-SEA INTERFACE (surface buoys: METBK, FDCHP, PCO2A)
+============================================================
+  Air Temperature — TEMPAIR
+  Air Temperature at 2 m — TEMPA2M
+  Turbulent Air Temperature — TMPATUR
+  Barometric Pressure — BARPRES
+  Relative Humidity — RELHUMI
+  Specific Humidity — SPECHUM
+  Specific Humidity at 2 m — SPHUM2M
+  Mean Wind Velocity — WINDAVG
+  Wind Velocity at 10 m — WIND10M
+  Wind Velocity in 3 Dimensions — WINDTUR
+  Precipitation — PRECIPM
+  Rain rate — RAINRTE
+  Downwelling Shortwave Irradiance — SHRTIRR
+  Downwelling Longwave Irradiance — LONGIRR
+  Net Shortwave Irradiance — NETSIRR
+  Net Longwave Irradiance — NETLIRR
+  Net Heat Flux — HEATFLX
+  Latent Heat Flux — LATNFLX
+  Sensible Heat Flux — SENSFLX
+  Rain Heat Flux — RAINFLX
+  Freshwater Flux — FRSHFLX
+  Momentum Flux (Wind Stress) — MOMMFLX
+  Direct Covariance Flux of Heat — FLUXHOT
+  Direct Covariance Flux of Momentum — FLUXMOM
+  Platform Direction and Tilt (3 axes) — MOTFLUX
+  Sea Surface Temperature — TEMPSRF
+  Sea Surface Salinity — SALSURF
+  Sea Surface Conductivity — CONDSRF
+  Partial Pressure of CO2 in Atmosphere — PCO2ATM
+  Partial Pressure of CO2 in Surface Sea Water — PCO2SSW
+  CO2 Mole Fraction in Atmosphere — XCO2ATM
+  CO2 Mole Fraction in Surface Sea Water — XCO2SSW
+  Flux of CO2 from Ocean into Atmosphere — CO2FLUX
+  PCO2A Gas Stream Pressure — PRESAIR
+
+============================================================
+WATER COLUMN (CTD, DO, pH, fluorometer, nitrate, ADCP, optics, PAR, IES...)
+============================================================
+  Temperature — TEMPWAT
+  Temperature from OPTAA — OPTTEMP
+  Conductivity — CONDWAT
+  Practical Salinity — PRACSAL
+  Density — DENSITY
+  Pressure (Depth) — PRESWAT
+  Bottom Pressure — IESPRES
+  pH — PHTOTAL
+  pH — PHWATER
+  pH — Seawater_pH
+  Optical Absorbance Signal Intensity at 434nm — PH434SI
+  Optical Absorbance Signal Intensity at 578nm — PH578SI
+  PHSEN Thermistor Temperature — ABSTHRM
+  Oxygen Concentration from Stable DO Instrument — DOCONCS
+  Oxygen Concentration from Fastrep DO Instrument — DOCONCF
+  Nitrate Concentration — NITROPT
+  Fluorometric Chlorophyll-a Concentration — CHLAFLO
+  Fluorometric CDOM Concentration — CDOMFLO
+  Optical Backscatter (Red Wavelengths) — FLUBSCT
+  Optical Absorption Coefficient — OPTABSN
+  Optical Beam Attenuation Coefficient — OPTATTN
+  Reference Absorption — OPTAREF
+  Signal Absorption — OPTASIG
+  Reference Beam Attenuation — OPTCREF
+  Signal Beam Attenuation — OPTCSIG
+  Downwelling Spectral Irradiance — SPECTIR
+  Photosynthetically Active Radiation (400-700 nm) — OPTPARW
+  Partial Pressure of CO2 in Water — PCO2WAT
+  Optical Absorbance Ratio at 434nm — CO2ABS1
+  Optical Absorbance Ratio at 620nm — CO2ABS2
+  PCO2W Thermistor Temperature — CO2THRM
+  Mean Point Water Velocity — VELPTMN
+  Turbulent Point Water Velocity — VELPTTU
+  Turbulent Velocity Profile — VELTURB
+  Velocity Profile — VELPROF
+  Echo Intensity — ECHOINT
+  Vertically Averaged Horizontal Water Velocity — IESAHWV
+  Horizontal Electric Fields — IES_HEF
+  Water Column Heat Content — IESHEAT
+  Water Property Profile Time Series — IES_WPP
+  Roundtrip Acoustic Travel Time — IESRATT
+  ROIs per mL — ROIPML
+  Flow Rate — FLOWRT
+  Volume Analyzed — VOLANA
+  Look Time — LOOKTI
+  Internal Humidity — HUMIDI
+
+============================================================
+SEAFLOOR / CRUST (cabled seafloor, vents, seismometers, seeps)
+============================================================
+  Seafloor Pressure — SFLPRES
+  Nano-resolution Bottom Pressure — BOTPRES
+  Seafloor Uplift and Deflation — BOTSFLU
+  Seafloor High-Resolution Tilt — BOTTILT
+  Broadband Ground Acceleration — GRNDACC
+  Broadband Ground Velocity — GRNDVEL
+  Short Period Ground Velocity — SGRDVEL
+  Broadband Acoustic Pressure Waves — HYDAPBB
+  Broadband Frequency — HYDFRBB
+  Low Frequency Acoustic Pressure Waves — HYDAPLF
+  Multi-Frequency Acoustic Backscatter — SONBSCA
+  Temperature Array in Spatial Grid — TEMPSFL
+  Vent Fluid Temperature from THSPH — THSPHTE
+  Vent Fluid Temperature from TRHPH — TRHPHTE
+  Vent Fluid Temperature from RASFL — TEMPVNT
+  Hydrogen Concentration — THSPHHC
+  Hydrogen Sulfide Concentration — THSPHHS
+  pH (vent, THSPH) — THSPHPH
+  Vent Fluid Chloride Concentration — TRHPHCC
+  Vent Fluid Oxidation-Reduction Potential (ORP) — TRHPHEH
+  Resistivity R1 / R2 / R3 — TRHPHR1 / TRHPHR2 / TRHPHR3
+  Thermistor Temperature — TRHPHVS
+  Thermocouple Temperature — TRHPHVC
+  ORP Volts — TRHPHVO
+  Suite of Dissolved Gas Measurements vs. Time — MASSPEC
+  Benthic Flow Rates — BENTHFL
+  Physical Fluid Sample (diffuse fluid chemistry) — PHSSAMP
+  16s rRNA sequence of filtered physical sample — DNASAMP
+  Still Image — CAMSTIL
+  HD Video — HDVIDEO

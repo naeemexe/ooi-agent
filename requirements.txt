@@ -1,0 +1,17 @@
+# OOI Research Assistant — dependencies
+#   pip install -r requirements.txt
+#
+# You also need: the JupyterLab AI chat with an agent persona (@claude via Claude Code,
+# or @opencode), each logged in. Those are installed separately (npm / their installers).
+
+mcp                    # the MCP server (ooi_mcp_server.py) speaks this protocol
+pyyaml                 # ooi_mcp_server.py reads context/m2m_urls.yml
+xarray                 # datasets returned by OOI
+matplotlib             # ooi_plot
+h5netcdf               # NetCDF backend for reading OOI files
+jupyterlab             # the notebook + AI chat panel
+jupyter-ai             # the @claude / @opencode chat personas
+
+# The OOI data library (load_gc_thredds etc.). If this line fails, install from source:
+#   pip install "git+https://github.com/oceanobservatories/ooi-data-explorations.git#subdirectory=python"
+ooi_data_explorations

@@ -1,0 +1,46 @@
+OOI RESEARCH THEMES
+The six science themes OOI was built to address. Arrays and instruments (see the other
+files) are tagged with the themes they serve — use these to connect a user's science
+question to the right sites and sensors.
+
+1. CLIMATE VARIABILITY, OCEAN CIRCULATION, AND ECOSYSTEMS
+   The ocean stores and redistributes heat and CO2; climate change alters both, with
+   feedbacks onto ecosystems. Requires high-frequency (minutes) yet decades-long time series
+   across scales, at coastal and global sites. Sub-topics:
+   - Climate Variability and Ecosystems: how atmospheric forcing (ENSO, PDO, NAO) shifts
+     water-column structure and marine food webs.
+   - Ocean Circulation, Mixing, and Ecosystems: how mixing replenishes nutrients to the
+     euphotic zone and drives — or, if too vigorous, light-limits — productivity.
+   - Global Biogeochemistry and Carbon Cycling: air-sea CO2 exchange, the solubility and
+     biological pumps, carbon export, and ocean acidification (high-latitude food webs are
+     especially pH-sensitive).
+
+2. TURBULENT MIXING AND BIOPHYSICAL INTERACTIONS
+   Mixing moves energy, materials, and organisms across scales, driving productivity and
+   deep-ocean carbon transport. Focus: mixing enhanced over rough topography, near-boundary
+   mixing, internal waves, and their steady-state and variable dynamics.
+
+3. COASTAL OCEAN DYNAMICS AND ECOSYSTEMS
+   Coupled atmospheric, terrestrial, physical, chemical, and biological processes on
+   continental shelves. Sub-topics:
+   - Shelf/Slope Exchange: episodic cross-shelf transport of heat, salt, and organic matter
+     (a focus of the Pioneer / Mid-Atlantic Bight array).
+   - Hypoxia on Continental Shelves: upwelling/downwelling-driven low-oxygen events and their
+     impact on marine life (a focus of the Endurance / Oregon shelf).
+
+4. FLUID-ROCK INTERACTIONS AND THE SUB-SEAFLOOR BIOSPHERE
+   Fluid circulation through oceanic crust: black-smoker hydrothermal vents and their biology,
+   methane and methane hydrates on margins, and a vast sub-seafloor microbial biosphere — and
+   how transient events (earthquakes, eruptions) perturb them. Sub-topic: Gas Hydrates
+   (methane storage/release at Hydrate Ridge). Served mainly by the Cabled Array (Axial
+   Seamount, Southern Hydrate Ridge).
+
+5. GLOBAL AND PLATE-SCALE GEODYNAMICS
+   Plate-boundary processes — earthquakes, tsunamis, volcanic eruptions — and deep Earth
+   structure, via a real-time seafloor seismograph network. Centered on the Juan de Fuca plate
+   and Axial Seamount (Cabled Array).
+
+6. OCEAN-ATMOSPHERE EXCHANGE
+   Air-sea exchange of mass (gases, aerosols, water vapor), momentum, and heat — especially
+   the poorly sampled high-wind and high-latitude regimes. Served by surface-buoy sensors
+   (METBK, FDCHP, PCO2A) on the surface moorings, plus surface-piercing profilers.

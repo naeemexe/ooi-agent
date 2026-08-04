@@ -1,0 +1,197 @@
+OOI INSTRUMENTS
+Each entry: NAME (CLASS) — discipline | what it measures | data-product codes it produces.
+The CLASS (e.g. ctdbp, phsen) is what you pass to ooi_lookup. Data-product codes cross-reference
+the Data Products file. "Where" notes typical deployment when it matters.
+
+============================================================
+CORE MOORING SENSORS (on most surface / coastal moorings)
+============================================================
+
+CTD (CTDBP / CTDMO / CTDPF / CTDGV / CTDAV) — Physical
+  Temperature, conductivity, salinity, pressure/depth, density. The workhorse; on nearly every
+  platform. Series differ by config: CTDBP=pumped (moorings), CTDMO=inductive, CTDPF=profiler,
+  CTDGV=glider, CTDAV=AUV.
+  Products: TEMPWAT, CONDWAT, PRACSAL, PRESWAT, DENSITY
+
+Dissolved Oxygen (DOSTA / DOFST) — Chemical
+  Dissolved oxygen concentration. Key for hypoxia studies. DOSTA=Aanderaa optode (moorings/
+  profilers); DOFST=Sea-Bird SBE43 (fast, shallow profilers).
+  Products: DOCONCS (stable), DOCONCF (fast)
+
+Seawater pH (PHSEN) — Chemical
+  Seawater pH (total scale, range 7-9). Primary ocean-acidification sensor. On most coastal
+  moorings, NSIF ~7 m. (Newer PHSENG/H = Sea-Bird Deep SeapHOx.)
+  Products: PHTOTAL, PHWATER, Seawater_pH, PH434SI, PH578SI, ABSTHRM
+
+Fluorometer (FLORT / FLORD / FLCDR) — Biological
+  Chlorophyll-a fluorescence, optical backscatter, and CDOM. Proxy for phytoplankton biomass.
+  FLORT=3-wavelength (chl + backscatter + CDOM); FLORD=2-wavelength; FLCDR=CDOM only.
+  Products: CHLAFLO, FLUBSCT, CDOMFLO
+
+Nitrate (NUTNR) — Chemical
+  Dissolved nitrate by UV absorption (Sea-Bird SUNA/ISUS). Nutrient / upwelling proxy.
+  Products: NITROPT
+
+Spectrophotometer (OPTAA) — Biological
+  Optical absorption and beam attenuation across wavelengths (Sea-Bird AC-S); indicates turbidity
+  and particle load.
+  Products: OPTABSN, OPTATTN, OPTAREF, OPTASIG, OPTCREF, OPTCSIG, OPTTEMP
+
+Spectral Irradiance (SPKIR) — Physical
+  Downwelling spectral irradiance at 7 wavelengths (light availability).
+  Products: SPECTIR
+
+Photosynthetically Active Radiation (PARAD) — Biological
+  PAR (400-700 nm) available for photosynthesis vs. depth/time.
+  Products: OPTPARW
+
+Turbidity (TURBD) — Physical
+  Water clarity via 700 nm backscatter (proxy for suspended particles). No standalone product.
+
+============================================================
+CARBON-SYSTEM SENSORS
+============================================================
+
+pCO2 Air-Sea (PCO2A) — Chemical
+  Partial pressure of CO2 in both air and surface seawater, and the air-sea CO2 flux. On surface
+  buoys. Carbon-cycle sensor.
+  Products: PCO2ATM, PCO2SSW, XCO2ATM, XCO2SSW, CO2FLUX, PRESAIR
+
+pCO2 Water (PCO2W) — Chemical
+  Partial pressure of CO2 in the water column (Sunburst SAMI-CO2); ocean acidification.
+  Products: PCO2WAT, CO2ABS1, CO2ABS2, CO2THRM
+
+============================================================
+CURRENTS, WAVES, AND PRESSURE
+============================================================
+
+Single Point Velocity Meter (VELPT) — Physical
+  Mean 2D current velocity (speed & direction), Nortek Aquadopp. On moorings and profilers.
+  Products: VELPTMN
+
+3-D Single Point Velocity Meter (VEL3D) — Physical
+  3D fluctuating (turbulent) velocity (u,v,w); small-scale mixing.
+  Products: VELPTTU
+
+Velocity Profiler / ADCP (ADCP) — Physical
+  3D current-velocity profile through the water column via acoustic Doppler.
+  Products: VELPROF, ECHOINT
+
+Surface Wave Spectra (WAVSS) — Physical
+  Significant wave height, period, and direction (TRIAXYS).
+  Products: WAVSTAT
+
+Seafloor Pressure (PRESF) — Physical
+  Seafloor pressure — tides, storms, tsunamis.
+  Products: SFLPRES
+
+Tidal Seafloor Pressure (PREST) — Physical
+  Millimeter-resolution tidal seafloor pressure (cabled: Slope Base, Axial Base, Hydrate summit).
+  Products: SFLPRES
+
+============================================================
+METEOROLOGY & AIR-SEA FLUX (surface buoys)
+============================================================
+
+Bulk Meteorology (METBK) — Physical
+  Full weather package + air-sea fluxes: air temp, wind, humidity, barometric pressure, short/
+  longwave radiation, rain, sea-surface temp/salinity/conductivity (L1), and computed heat/
+  freshwater/momentum fluxes (L2).
+  Products (L1): TEMPAIR, RELHUMI, BARPRES, WINDAVG, PRECIPM, SHRTIRR, LONGIRR, CONDSRF, SALSURF,
+  TEMPSRF, TEMPA2M, SPECHUM, SPHUM2M, WIND10M
+  Products (L2 fluxes): HEATFLX, LATNFLX, SENSFLX, NETLIRR, NETSIRR, MOMMFLX, FRSHFLX, RAINFLX
+
+Direct Covariance Flux (FDCHP) — Physical
+  Direct air-sea flux of momentum and heat from sonic anemometer + motion sensor.
+  Products: FLUXMOM, FLUXHOT, WINDTUR, TMPATUR, MOTFLUX
+
+============================================================
+BIOLOGY / IMAGING / ACOUSTICS
+============================================================
+
+Bio-acoustic Sonar (ZPLS) — Biological
+  Acoustic backscatter from plankton/zooplankton. ZPLSC=coastal, ZPLSG=global.
+  Products: SONBSCA
+
+Plankton Imaging (PLIMS) — Biological
+  Imaging FlowCytobot (IFCB) images phytoplankton cells (10-150 microns).
+  Products: ROIPML, FLOWRT, VOLANA, LOOKTI, HUMIDI
+
+Particulate DNA Sampler (PPSDN) — Biological
+  Filters and preserves seawater for microbial DNA (cabled, Axial vents).
+  Products: DNASAMP
+
+Particle Size Analysis (PRTSZ) — Physical
+  Suspended particle size & concentration (laser diffraction, Pioneer MAB). No standalone product.
+
+Digital Still Camera (CAMDS) — Biological
+  Seafloor still images for organism/feature identification.
+  Products: CAMSTIL
+
+HD Digital Video Camera (CAMHD) — Geological
+  Real-time HD video of the ASHES hydrothermal vent (Axial Seamount).
+  Products: HDVIDEO
+
+============================================================
+CABLED-ARRAY SEAFLOOR / VENT / GEOPHYSICS (mostly Axial Seamount & Hydrate Ridge)
+============================================================
+
+Broadband Ocean Bottom Seismometer (OBSBB) — Geological
+  Earthquakes/seismicity along subduction zone and Axial volcano (real-time).
+  Products: GRNDACC, GRNDVEL
+
+Short-Period Ocean Bottom Seismometer (OBSSP) — Geological
+  Small local earthquakes (0.1-100 Hz).
+  Products: SGRDVEL
+
+Bottom Pressure and Tilt (BOTPT) — Geological
+  Seafloor inflation/deflation ("breathing") and tilt at Axial summit.
+  Products: BOTPRES, BOTSFLU, BOTTILT
+
+Broadband Hydrophone (HYDBB) — Physical
+  Broadband underwater sound (marine life to rain).
+  Products: HYDAPBB, HYDFRBB
+
+Low-Frequency Hydrophone (HYDLF) — Physical
+  Low-frequency sound (wind, rain, seismic t-phases).
+  Products: HYDAPLF
+
+Horizontal Electric Field, Pressure & Inverted Echo Sounder (HPIES) — Physical
+  Currents, bottom pressure, and acoustic travel time for water-column structure.
+  Products: IES_HEF, IES_WPP, IESAHWV, IESHEAT, IESPRES, IESRATT
+
+Hydrothermal Vent Fluid In-situ Chemistry (THSPH) — Chemical
+  Vent-fluid temperature, hydrogen, hydrogen sulfide, pH.
+  Products: THSPHTE, THSPHHC, THSPHHS, THSPHPH
+
+Hydrothermal Vent Fluid Temperature & Resistivity (TRHPH) — Geological
+  Vent temperature, resistivity (chlorinity), and redox (Eh).
+  Products: TRHPHTE, TRHPHCC, TRHPHEH, TRHPHR1, TRHPHR2, TRHPHR3, TRHPHVC, TRHPHVO, TRHPHVS
+
+Hydrothermal Vent Fluid Interactive Sampler (RASFL) — Chemical
+  Collects/preserves vent-fluid samples; measures vent temperature.
+  Products: TEMPVNT
+
+Diffuse Vent Fluid 3-D Temperature Array (TMPSF) — Physical
+  24-point 3D temperature field of diffuse hydrothermal flow (ASHES).
+  Products: TEMPSFL
+
+Mass Spectrometer (MASSP) — Chemical
+  In-situ dissolved gases (CO2, CH4, H2S, etc.) at vents/seeps.
+  Products: MASSPEC
+
+Benthic Fluid Flow (FLOBN) — Chemical
+  Fluid flow at the sediment-water interface at methane seeps (Hydrate Ridge).
+  Products: BENTHFL
+
+Osmosis-Based Water Sampler (OSMOI) — Chemical
+  Long-term sampling of diffuse/pore fluids (vents and seeps).
+  Products: PHSSAMP
+
+============================================================
+ENGINEERING
+============================================================
+
+Engineering (ENG / MOPAK / etc.) — Engineering
+  Housing temp/humidity, motion (MOPAK 3-axis motion pack), ground-fault detection, controllers.
+  Used for calibration and QC, not primary science. No science data products.
